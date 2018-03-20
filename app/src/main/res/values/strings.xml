@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">FormProgmob</string>
+    <string name="title_result_activity">Result</string>
 
     <string-array name="skill">
         <item>--Choose--</item>
