@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FormProgmob</string>
+
+    <string-array name="skill">
+        <item>--Choose--</item>
+        <item>SHOOTER</item>
+        <item>MEDIC</item>
+        <item>SELF DEFENSE</item>
+    </string-array>
+
+    <string-array name="pilihagama">
+        <item >--Pilih Agama--</item>
+        <item   >Hindu</item>
+        <item   >Budha</item>
+        <item   >Islam</item>
+        <item   >Kristen</item>
+        <item   >Konghucu</item>
+    </string-array>
+</resources>
