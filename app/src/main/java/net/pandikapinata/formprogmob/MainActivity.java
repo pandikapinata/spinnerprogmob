@@ -1,16 +1,19 @@
 package net.pandikapinata.formprogmob;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,18 +26,11 @@ public class MainActivity extends AppCompatActivity {
     EditText inputAlamat;
     @BindView(R.id.input_agama)
     Spinner inputAgama;
+    @BindView(R.id.gender)
+    RadioGroup inputGender;
 
     @BindView(R.id.simpan_button)
     Button simpan_button;
-
-    @BindView(R.id.hasil_nama)
-    TextView hasilNama;
-    @BindView(R.id.hasil_nim)
-    TextView hasilNim;
-    @BindView(R.id.hasil_alamat)
-    TextView hasilAlamat;
-    @BindView(R.id.hasil_agama)
-    TextView hasilAgama;
 
 
     @Override
@@ -47,14 +43,29 @@ public class MainActivity extends AppCompatActivity {
         simpan_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nama = inputNama.getText().toString();
-                hasilNama.setText(nama);
-                String nim = inputNim.getText().toString();
-                hasilNim.setText(nim);
-                String alamat = inputAlamat.getText().toString();
-                hasilAlamat.setText(alamat);
-                String agama = inputAgama.getSelectedItem().toString();
-                hasilAgama.setText(agama);
+
+                int genders = inputGender.getCheckedRadioButtonId();
+                RadioButton jk = (RadioButton) findViewById(genders);
+
+                User user = new User();
+                user.setNama(inputNama.getText().toString());
+                user.setNim(inputNim.getText().toString());
+                user.setAlamat(inputAlamat.getText().toString());
+                user.setAgama(inputAgama.getSelectedItem().toString());
+                user.setGender(jk.getText().toString());
+
+
+                Intent intent = Henson.with(MainActivity.this)
+                        .gotoResultActivity()
+                        .isSuccess(true)
+                        .user(user)
+                        .build();
+
+                startActivity(intent);
+
+
+
+
             }
         });
     }

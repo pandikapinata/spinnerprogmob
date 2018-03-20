@@ -18,7 +18,12 @@
         </activity>
         <activity
             android:name=".ResultActivity"
-            android:label="@string/title_result_activity">
+            android:label="@string/title_result_activity"
+            android:parentActivityName=".MainActivity" >
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 
